@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Apri YouTube</title>
+  <script>
+    (function () {
+      var target = 'https://www.youtube.com/@cosedalmondoofficial';
+      var isAndroid = /Android/i.test(navigator.userAgent);
+      var isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
+
+      if (isAndroid) {
+        // Android: prova ad aprire direttamente l'app di YouTube
+        window.location = 'intent://www.youtube.com/@cosedalmondoofficial#Intent;scheme=https;package=com.google.android.youtube;end';
+        setTimeout(function () { window.location.href = target; }, 1500);
+      } else if (isIOS) {
+        // iOS: usa lo schema dell'app YouTube
+        var appUrl = 'youtube://www.youtube.com/@cosedalmondoofficial';
+        window.location = appUrl;
+        setTimeout(function () { window.location.replace(target); }, 1500);
+      } else {
+        window.location.href = target;
+      }
+    })();
+  </script>
+  <noscript>
+    <a href="https://www.youtube.com/@cosedalmondoofficial">Apri YouTube</a>
+  </noscript>
+</head>
+<body></body>
+</html>
